@@ -1,6 +1,6 @@
 # Editor
 .vscode
 .idea
-
+./backend/.git
 # Environment
 .env
