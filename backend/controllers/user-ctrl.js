@@ -62,4 +62,11 @@ login = async (req, res) => {
   });
 };
 
-module.exports = { register, login };
+getuser = async (req, res) => {
+  return res.status(200).json({
+    success: true,
+    message: "User Validated Successfully",
+  });
+};
+
+module.exports = { register, login, getuser };
