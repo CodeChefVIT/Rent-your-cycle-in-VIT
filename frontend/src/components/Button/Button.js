@@ -11,7 +11,6 @@ function CustomButton({ children, bgColor }) {
         backgroundColor: bgColor,
         margin: "10px",
         fontSize: "2rem",
-        fontFamily: "'PT Sans', sans-serif",
         fontWeight: "100px",
       }}
     >
