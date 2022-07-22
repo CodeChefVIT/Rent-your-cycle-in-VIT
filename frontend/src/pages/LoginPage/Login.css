@@ -28,7 +28,6 @@
 .input_fields:active {
   outline: none;
 }
-.checkbox
-{
+.checkbox {
   display: flex;
 }

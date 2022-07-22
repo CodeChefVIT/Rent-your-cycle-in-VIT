@@ -1,6 +1,6 @@
 import React from 'react'
 import { ButtonBase } from '@mui/material'
-function CustomButton ({ children, bgColor, onClick }) {
+function CustomButton ({ children, bgColor, color, onClick }) {
   return (
     <ButtonBase
       onClick={onClick}
@@ -10,9 +10,11 @@ function CustomButton ({ children, bgColor, onClick }) {
         width: '140px',
         border: 'none',
         backgroundColor: bgColor,
+        color,
         margin: '10px',
         fontSize: '2rem',
-        fontWeight: '100px'
+        fontWeight: '100px',
+        alignSelf: 'center'
       }}
     >
       {children}

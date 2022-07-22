@@ -4,6 +4,7 @@ import VisibilityIcon from '@mui/icons-material/Visibility'
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
 import { FormControlLabel, Checkbox } from '@mui/material'
 import './Login.css'
+import Button from '../../components/Button/Button'
 function Login () {
   const [formData, setFormData] = useState({ username: '', password: '' })
   const [revealPassword, setRevealPassword] = useState(false)
@@ -33,6 +34,7 @@ function Login () {
               style={{ marginRight: '-2.5rem' }}
             />
             <button
+              style={{ cursor: 'pointer' }}
               type='button'
               onClick={toggleVisibility}
               className='visibility_button'
@@ -56,6 +58,9 @@ function Login () {
             control={<Checkbox defaultChecked />}
             label='Remember me'
           />
+          <Button color='black' bgColor='#DEE2E6'>
+            Login
+          </Button>
         </form>
       </div>
     </div>
