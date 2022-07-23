@@ -13,10 +13,11 @@
   flex-direction: column;
   justify-content: center;
   color: white;
+  width: 400px;
 }
 .input_fields {
   font-size: 2rem;
-  width: 300px;
+  width: 100%;
   border: none;
   border-bottom: 2px solid #f8f9fa;
   background-color: transparent;
@@ -29,5 +30,8 @@
   outline: none;
 }
 .checkbox {
+  display: flex;
+}
+.multiinput_line {
   display: flex;
 }
