@@ -1,6 +1,6 @@
-.login_page {
+.signup_page {
   background-color: #212529;
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
   height: max-content;
   display: flex;
@@ -12,20 +12,21 @@
   border: none;
   outline: none;
 }
-.login_container {
+.signup_container {
   width: min(400px, 90%);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.login_form {
+.signup_form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   color: white;
   width: 100%;
+  height: 100%;
 }
 .input_fields {
   font-size: 2rem;
@@ -46,8 +47,18 @@
 }
 .multiinput_line {
   display: flex;
+  width: 100%;
 }
-.register_link {
-  font-size: 2rem;
+.multiinput_line option {
+  color: black;
+}
+.multiinput_line > .input_fields:first-child {
+  margin-right: 20px;
+}
+.password_field {
+  width: 100%;
+}
+.login_link {
   color: white;
+  font-size: 2rem;
 }
