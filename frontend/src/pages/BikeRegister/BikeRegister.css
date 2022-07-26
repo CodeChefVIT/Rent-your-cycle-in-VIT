@@ -1,0 +1,42 @@
+.logo_image {
+  margin: auto;
+  display: block;
+}
+.bike_register {
+  background-color: #212529;
+  width: 100vw;
+  min-height: 100vh;
+}
+.form_container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(90%, 600px);
+}
+.bike_details_form {
+  border-radius: 2rem;
+  border: 1px solid #cccdce;
+  padding: 3rem;
+}
+.input_field {
+  font-size: 2rem;
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid #cccdce;
+  background-color: transparent;
+  outline: none;
+  color: white;
+  margin: 1rem 0;
+  padding: 1rem;
+}
+.input_subtitle {
+  color: #cccdce;
+  font-size: 1.5rem;
+}
+.bike_details_header {
+  color: white;
+  font-weight: 500;
+  font-size: 3rem;
+  margin-left: 2rem;
+}
