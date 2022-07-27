@@ -170,7 +170,12 @@ function SignUp() {
             }}
           />
 
-          <Button onClick={submitForm} color="black" bgColor="#DEE2E6">
+          <Button
+            type="submit"
+            onClick={submitForm}
+            color="black"
+            bgColor="#DEE2E6"
+          >
             Sign Up
           </Button>
           <Link className="login_link" to="/login">

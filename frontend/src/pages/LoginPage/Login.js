@@ -88,7 +88,12 @@ function Login() {
             control={<Checkbox defaultChecked />}
             label="Remember me"
           />
-          <Button onClick={submitForm} color="black" bgColor="#DEE2E6">
+          <Button
+            type="submit"
+            onClick={submitForm}
+            color="black"
+            bgColor="#DEE2E6"
+          >
             Login
           </Button>
           <Link className="register_link" to={"/register"}>
