@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import logo from "../../logo.svg";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import { toast } from "react-toastify";
 import "./SignUp.css";
+
 import Button from "../../components/Button/Button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 function SignUp() {
   const [formData, setFormData] = useState({
@@ -18,6 +20,8 @@ function SignUp() {
     roomno: "",
     phone: "",
   });
+  const navigate = useNavigate();
+
   const [revealPassword, setRevealPassword] = useState(false);
   const handleSubmit = () => {
     console.log(formData);
@@ -34,10 +38,25 @@ function SignUp() {
     e.preventDefault();
     console.log(formData);
     const url = "https://cycle-rent-vit.herokuapp.com/user/register";
+    const toastid = toast.loading("Please Wait ...");
     axios
       .post(url, formData)
       .then(({ data }) => {
-        console.log(data);
+        if (data.success === true) {
+          toast.update(toastid, {
+            render: "Logged In",
+            type: "success",
+            isLoading: false,
+            autoClose: 3000,
+          });
+          navigate("/");
+        } else {
+          toast.update(toastid, {
+            render: "Some problem Occurred",
+            type: "error",
+            isLoading: false,
+          });
+        }
       })
       .catch((err) => {
         console.log(err);

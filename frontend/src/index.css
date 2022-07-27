@@ -25,6 +25,9 @@ html {
   font-size: 62.5%;
   box-sizing: border-box;
 }
+.Toastify__toast-body {
+  font-size: 2rem;
+}
 @media screen and (max-width: 756px) {
   html {
     font-size: 55%;
