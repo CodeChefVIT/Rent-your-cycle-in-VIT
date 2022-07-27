@@ -2,12 +2,22 @@ import React, { useState } from "react";
 import logo from "../../logo.svg";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import { FormControlLabel, Checkbox } from "@mui/material";
 import "./SignUp.css";
 import Button from "../../components/Button/Button";
 import { Link } from "react-router-dom";
+import axios from "axios";
 function SignUp() {
-  const [formData, setFormData] = useState({ username: "", password: "" });
+  const [formData, setFormData] = useState({
+    name: "",
+    regno: "",
+    password: "",
+    username: "",
+    confirmPassword: "",
+    email: "",
+    block: "a",
+    roomno: "",
+    phone: "",
+  });
   const [revealPassword, setRevealPassword] = useState(false);
   const handleSubmit = () => {
     console.log(formData);
@@ -20,18 +30,43 @@ function SignUp() {
     color: "white",
     fontSize: "2rem",
   };
+  const submitForm = (e) => {
+    e.preventDefault();
+    console.log(formData);
+    const url = "https://cycle-rent-vit.herokuapp.com/user/register";
+    axios
+      .post(url, formData)
+      .then(({ data }) => {
+        console.log(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <div className="signup_page">
       <div className="signup_container">
-        <img src={logo} alt="" />
+        <img className="logo_image" src={logo} alt="" />
         <form className="signup_form" onSubmit={handleSubmit}>
-          <input className="input_fields" type="text" placeholder="Full Name" />
+          <input
+            className="input_fields"
+            type="text"
+            placeholder="Full Name"
+            value={formData.name}
+            onChange={(e) => {
+              setFormData((data) => ({ ...data, name: e.target.value }));
+            }}
+          />
 
           <input
             className="input_fields"
             type="text"
             placeholder="Registration Number"
+            value={formData.regno}
+            onChange={(e) => {
+              setFormData((data) => ({ ...data, regno: e.target.value }));
+            }}
           />
           <div className="multiinput_line">
             <select
@@ -39,22 +74,42 @@ function SignUp() {
               className="input_fields"
               type="text"
               placeholder="Block"
+              value={formData.block}
+              onChange={(e) => {
+                setFormData((data) => ({ ...data, fullname: e.target.value }));
+              }}
             >
               <option value="a">Block A</option>
-              <option value="a">Block B</option>
-              <option value="a">Block C</option>
-              <option value="a">Block D</option>
-              <option value="a">Block E</option>
-              <option value="a">Block F</option>
-              <option value="a">Block G</option>
-              <option value="a">Block H</option>
+              <option value="b">Block B</option>
+              <option value="c">Block C</option>
+              <option value="d">Block D</option>
+              <option value="e">Block E</option>
+              <option value="f">Block F</option>
+              <option value="g">Block G</option>
+              <option value="h">Block H</option>
             </select>
-            <input className="input_fields" type="text" placeholder="Room No" />
+            <input
+              className="input_fields"
+              type="text"
+              placeholder="Room No"
+              value={formData.roomno}
+              onChange={(e) => {
+                setFormData((data) => ({ ...data, roomno: e.target.value }));
+              }}
+            />
           </div>
           <input
             className="input_fields"
             type="text"
-            placeholder="Phone Number"
+            placeholder="Email"
+            value={formData.email}
+            onChange={(e) => {
+              setFormData((data) => ({
+                ...data,
+                username: e.target.value,
+                email: e.target.value,
+              }));
+            }}
           />
           <div style={{ display: "flex" }} className="password_field">
             <input
@@ -62,6 +117,10 @@ function SignUp() {
               type={revealPassword ? "text" : "password"}
               placeholder="Password"
               style={{ marginRight: "-2.5rem" }}
+              value={formData.password}
+              onChange={(e) => {
+                setFormData((data) => ({ ...data, password: e.target.value }));
+              }}
             />
             <button
               type="button"
@@ -81,6 +140,13 @@ function SignUp() {
               type={revealPassword ? "text" : "password"}
               placeholder="Repeat Password"
               style={{ marginRight: "-2.5rem" }}
+              value={formData.confirmPassword}
+              onChange={(e) => {
+                setFormData((data) => ({
+                  ...data,
+                  confirmPassword: e.target.value,
+                }));
+              }}
             />
             <button
               type="button"
@@ -98,9 +164,13 @@ function SignUp() {
             className="input_fields"
             type="text"
             placeholder="Whatsapp Number"
+            value={formData.phone}
+            onChange={(e) => {
+              setFormData((data) => ({ ...data, phone: e.target.value }));
+            }}
           />
 
-          <Button color="black" bgColor="#DEE2E6">
+          <Button onClick={submitForm} color="black" bgColor="#DEE2E6">
             Sign Up
           </Button>
           <Link className="login_link" to="/login">
