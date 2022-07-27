@@ -8,13 +8,21 @@ import "./Login.css";
 import Button from "../../components/Button/Button";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  set_user,
+  remove_user,
+  userSelector,
+  AuthSelector,
+} from "../../reducers/userSlice";
 function Login() {
+  const user = useSelector(userSelector);
+
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({ username: "", password: "" });
   const [revealPassword, setRevealPassword] = useState(false);
-  const handleSubmit = () => {
-    console.log(formData);
-  };
+
   const toggleVisibility = (e) => {
     e.preventDefault();
     setRevealPassword(!revealPassword);
@@ -34,6 +42,9 @@ function Login() {
       .post(url, formData)
       .then(({ data }) => {
         if (data.success === true) {
+          dispatch(
+            set_user({ id: data.id, token: data.token, isAuth: data.isAuth })
+          );
           toast.update(toastid, {
             render: "Logged In",
             type: "success",
@@ -64,7 +75,7 @@ function Login() {
     <div className="login_page">
       <div className="login_container">
         <img className="logo_image" src={logo} alt="" />
-        <form className="login_form" onSubmit={handleSubmit}>
+        <form className="login_form">
           <input
             className="input_fields"
             type="text"

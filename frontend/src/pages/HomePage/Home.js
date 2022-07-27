@@ -3,10 +3,12 @@ import logo from "../../logo.svg";
 import "./Home.css";
 import Button from "../../components/Button/Button";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { AuthSelector, userSelector } from "../../reducers/userSlice";
 function Home() {
-  const [userAuthenticated] = useState(false);
+  const { isAuth } = useSelector(userSelector);
   const navigate = useNavigate();
-  if (!userAuthenticated) {
+  if (!isAuth) {
     return (
       <div className="home_page">
         <div className="container">
