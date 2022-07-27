@@ -44,7 +44,7 @@ function SignUp() {
       .then(({ data }) => {
         if (data.success === true) {
           toast.update(toastid, {
-            render: "Logged In",
+            render: "Signed up successfully",
             type: "success",
             isLoading: false,
             autoClose: 3000,
@@ -55,11 +55,17 @@ function SignUp() {
             render: "Some problem Occurred",
             type: "error",
             isLoading: false,
+            autoClose: 3000,
           });
         }
       })
       .catch((err) => {
-        console.log(err);
+        toast.update(toastid, {
+          render: "Some problem Occurred",
+          type: "error",
+          isLoading: false,
+          autoClose: 3000,
+        });
       });
   };
 
