@@ -51,3 +51,6 @@
   font-size: 2rem;
   color: white;
 }
+.logo_image {
+  width: clamp(200px, 30vw, 300px);
+}
