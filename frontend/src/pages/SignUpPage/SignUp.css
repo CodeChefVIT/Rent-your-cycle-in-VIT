@@ -1,5 +1,4 @@
 .signup_page {
-  background-color: #212529;
   width: 100%;
   min-height: 100vh;
   height: max-content;
@@ -13,30 +12,33 @@
   outline: none;
 }
 .signup_container {
-  width: min(400px, 90%);
+  width: min(500px, 90%);
+  background-color: #dee2e6;
+  padding: 20px 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-radius: 20px;
 }
 .signup_form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: white;
+  color: black;
   width: 100%;
   height: 100%;
 }
-.input_fields {
+.signup_page .input_fields {
   font-size: 2rem;
   width: 100%;
   border: none;
-  border-bottom: 2px solid #f8f9fa;
+  border-bottom: 2px solid black;
   background-color: transparent;
   outline: none;
-  color: white;
-  margin: 1rem 0;
+  color: black;
+  margin: 1.2rem 0;
   padding: 1rem;
 }
 .input_fields:active {
@@ -59,7 +61,7 @@
   width: 100%;
 }
 .login_link {
-  color: white;
+  color: black;
   font-size: 2rem;
 }
 

@@ -28,8 +28,8 @@ function Login() {
     setRevealPassword(!revealPassword);
   };
   const visibilityIconStyle = {
-    color: "white",
-    fontSize: "2rem",
+    color: "black",
+    fontSize: "2.5rem",
   };
   const submitForm = (e) => {
     e.preventDefault();
@@ -74,7 +74,7 @@ function Login() {
   return (
     <div className="login_page">
       <div className="login_container">
-        <img className="logo_image" src={logo} alt="" />
+        {/* <img className="logo_image" src={logo} alt="" /> */}
         <form className="login_form">
           <input
             className="input_fields"
@@ -91,7 +91,7 @@ function Login() {
               className="input_fields"
               type={revealPassword ? "text" : "password"}
               placeholder="Password"
-              style={{ marginRight: "-2.5rem" }}
+              style={{ marginRight: "-3.5rem" }}
               value={formData.password}
               onChange={(e) => {
                 setFormData((data) => ({ ...data, password: e.target.value }));
@@ -112,6 +112,7 @@ function Login() {
           </div>
           <FormControlLabel
             sx={{
+              
               alignSelf: "flex-start",
               "& .MuiTypography-root": {
                 fontSize: "2rem",
@@ -124,8 +125,8 @@ function Login() {
           <Button
             type="submit"
             onClick={submitForm}
-            color="black"
-            bgColor="#DEE2E6"
+            color="white"
+            bgColor="#212529"
           >
             Login
           </Button>
