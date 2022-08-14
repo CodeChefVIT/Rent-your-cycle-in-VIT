@@ -5,10 +5,12 @@ import "react-toastify/dist/ReactToastify.css";
 import Login from "./pages/LoginPage/Login";
 import SignUp from "./pages/SignUpPage/SignUp";
 import BikeRegister from "./pages/BikeRegister/BikeRegister";
+import TopDropdown from "./components/TopDropdown/TopDropdown";
 function App() {
   return (
     <div className="app">
       <Router>
+        <TopDropdown />
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route exact path="/login" element={<Login />} />

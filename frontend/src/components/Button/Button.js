@@ -12,7 +12,7 @@ function CustomButton({ type = "button", children, bgColor, color, onClick }) {
         border: "none",
         backgroundColor: bgColor,
         color,
-        margin: "10px",
+        margin: "25px",
         fontSize: "2rem",
         fontWeight: "100px",
         alignSelf: "center",

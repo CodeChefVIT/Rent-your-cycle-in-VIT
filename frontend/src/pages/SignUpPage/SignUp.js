@@ -31,8 +31,8 @@ function SignUp() {
     setRevealPassword(!revealPassword);
   };
   const visibilityIconStyle = {
-    color: "white",
-    fontSize: "2rem",
+    color: "black",
+    fontSize: "2.5rem",
   };
   const submitForm = (e) => {
     e.preventDefault();
@@ -72,7 +72,7 @@ function SignUp() {
   return (
     <div className="signup_page">
       <div className="signup_container">
-        <img className="logo_image" src={logo} alt="" />
+        {/* <img className="logo_image" src={logo} alt="" /> */}
         <form className="signup_form" onSubmit={handleSubmit}>
           <input
             className="input_fields"
@@ -95,7 +95,7 @@ function SignUp() {
           />
           <div className="multiinput_line">
             <select
-              style={{ backgroundColor: "transparent", color: "white" }}
+              style={{ backgroundColor: "transparent", color: "black" }}
               className="input_fields"
               type="text"
               placeholder="Block"
@@ -141,7 +141,7 @@ function SignUp() {
               className="input_fields"
               type={revealPassword ? "text" : "password"}
               placeholder="Password"
-              style={{ marginRight: "-2.5rem" }}
+              style={{ marginRight: "-3.5rem" }}
               value={formData.password}
               onChange={(e) => {
                 setFormData((data) => ({ ...data, password: e.target.value }));
@@ -164,7 +164,7 @@ function SignUp() {
               className="input_fields"
               type={revealPassword ? "text" : "password"}
               placeholder="Repeat Password"
-              style={{ marginRight: "-2.5rem" }}
+              style={{ marginRight: "-3.5rem" }}
               value={formData.confirmPassword}
               onChange={(e) => {
                 setFormData((data) => ({
@@ -198,8 +198,8 @@ function SignUp() {
           <Button
             type="submit"
             onClick={submitForm}
-            color="black"
-            bgColor="#DEE2E6"
+            color="white"
+            bgColor="#212529"
           >
             Sign Up
           </Button>

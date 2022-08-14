@@ -25,25 +25,7 @@ function Home() {
   if (!isAuth) {
     return (
       <div className="home_page">
-        <div className="container">
-          <img src={logo} alt="" className="logo_image" />
-          <Button
-            onClick={() => {
-              navigate("/login");
-            }}
-            bgColor="#DEE2E6"
-          >
-            Login
-          </Button>
-          <Button
-            onClick={() => {
-              navigate("/register");
-            }}
-            bgColor="#DEE2E6"
-          >
-            Sign Up
-          </Button>
-        </div>
+        
       </div>
     );
   } else {
