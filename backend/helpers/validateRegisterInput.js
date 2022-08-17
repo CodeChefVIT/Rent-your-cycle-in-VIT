@@ -3,9 +3,13 @@ const User = require("../model/user-model");
 module.exports = async ({
   name,
   username,
+  regno,
   password,
-  email,
   confirmPassword,
+  block,
+  room_no,
+  phone,
+  wa_num,
 }) => {
   const errors = {};
   if (name.trim() === "") {
@@ -20,20 +24,21 @@ module.exports = async ({
         "Username Already Exists, Please Choose Another Username";
     }
   }
-  if (email.trim() === "") {
-    errors.email = "Email Must Not Be Empty";
-  } else {
-    const regEx =
-      /^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$/;
-    if (!email.match(regEx)) {
-      errors.email = "Email Must Be a Valid Email Address";
-    }
-    const user = await User.findOne({ email: email });
-    if (user) {
-      errors.email = "Email ID is already Taken Please Try Again";
-    }
+  if (regno.trim() === "") {
+    errors.regno = "Registration Number Must Not Be Empty";
   }
-
+  if (block.trim() === "") {
+    errors.block = "Block Must Not Be Empty";
+  }
+  if (room_no.trim() === "") {
+    errors.room_no = "Room Number Must Not Be Empty";
+  }
+  if (phone.trim() === "") {
+    errors.phone = "Phone Number Must Not Be Empty";
+  }
+  if (wa_num.trim() === "") {
+    errors.wa_num = "Whatsapp Number Must Not Be Empty";
+  }
   if (password.trim() === "") {
     errors.password = "Password is Empty";
   }

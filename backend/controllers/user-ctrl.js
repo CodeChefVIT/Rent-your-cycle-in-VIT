@@ -19,12 +19,19 @@ register = async (req, res) => {
   const newUser = new User(req.body);
   const result = await newUser.save();
   const token = generateToken(result);
-  return res.status(201).json({
-    success: true,
-    message: "Account Created Successfully",
-    id: result._id,
-    token,
-  });
+  if (token) {
+    return res.status(201).json({
+      success: true,
+      message: "Account Created Successfully",
+      id: result._id,
+      token,
+    });
+  } else {
+    return res.status(401).json({
+      success: false,
+      message: "Some Error Occured",
+    });
+  }
 };
 
 login = async (req, res) => {

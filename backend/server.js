@@ -4,20 +4,21 @@ const cors = require("cors");
 
 const db = require("./db");
 const userRouter = require("./routes/user-router");
-const cycleRouter = require("./routes/cycle-router");
+const bikeRouter = require("./routes/bike-router");
 
 const app = express();
 const PORT = process.env.PORT;
 
+//app.use(express.urlencoded());
 app.use(express.urlencoded({ extended: true }));
+
 app.use(cors());
 app.use(express.json());
-app.use("/uploads", express.static("uploads"));
 
 db.on("error", console.error.bind(console, "MongoDB Connection Error : "));
 
 app.use("/user", userRouter);
-app.use("/cycle", cycleRouter);
+app.use("/bike", bikeRouter);
 
 app.listen(PORT, () => {
   console.log(`Server Started On http://localhost:${PORT}`);
