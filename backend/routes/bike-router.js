@@ -1,16 +1,18 @@
 const express = require("express");
 
-const { uploadCycleDetails } = require("../controllers/image-ctrl");
+const { uploadBikeDetails, getAllBikes } = require("../controllers/bike-ctrl");
 const { authUserValidation } = require("../helpers/auth-user-validation");
 const { upload } = require("../helpers/image-export");
 
 const router = express.Router();
 
 router.post(
-  "/uploadcycledata",
+  "/uploadbikedata",
   authUserValidation,
   upload.single("image"),
-  uploadCycleDetails
+  uploadBikeDetails
 );
+
+router.get("/getBikes", getAllBikes);
 
 module.exports = router;
