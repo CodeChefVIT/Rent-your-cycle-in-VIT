@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Vike</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="renter_confirmation">Your cycle \nhas been listed!</string>
+    <string name="rider_confirmation">Your booking \nhas been confirmed!</string>
+    <string name="checkout_text"><u>CHECKOUT</u></string>
+    <string name="bike_details"><u>Bike Details:</u></string>
+    <string name="renter_details"><u>Renter Details:</u></string>
+</resources>
