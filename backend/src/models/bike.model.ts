@@ -5,16 +5,18 @@ export interface IBike extends Document {
     model: string;
     company: string;
     owner: UserDocument["_id"];
+    current_user: UserDocument["_id"];
     image: string;
-    booked: boolean;
+    rented: boolean;
 }
 
 const BikeSchema: Schema = new Schema({
     model: { type: String, required: true },
     company: { type: String, required: true },
     owner: { type: Schema.Types.ObjectId, ref: "User", required: true },
+    current_user: { type: Schema.Types.ObjectId, ref: "User", default: null },
     image: { type: String, required: true },
-    booked: { type: Boolean, required: true },
+    rented: { type: Boolean, default: false },
 });
 
-export default mongoose.model<IBike>("Bike", BikeSchema);
+export const Bike = mongoose.model<IBike>("Bike", BikeSchema);

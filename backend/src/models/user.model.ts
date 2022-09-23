@@ -9,8 +9,8 @@ export type UserDocument = mongoose.Document & {
     block: string;
     room: string;
     phone: string;
-    wa_number: string;
     isVerified: boolean;
+    owned_bikes: mongoose.Types.ObjectId[];
     comparePassword: comparePasswordFunction;
 };
 
@@ -25,8 +25,8 @@ const userSchema : mongoose.Schema = new mongoose.Schema({
     block: { type: String, required: true },
     room: { type: Number, required: true },
     phone: { type: String, required: true },
-    wa_number: { type: String, required: true },
     verifyhash: { type: String },
+    owned_bikes: [{ type: mongoose.Schema.Types.ObjectId, ref: "Bike" }],
     isVerified: { type: Boolean, default: false }
 });
 

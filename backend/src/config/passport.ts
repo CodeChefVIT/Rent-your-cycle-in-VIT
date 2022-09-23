@@ -3,6 +3,7 @@ import { Strategy as LocalStrategy } from "passport-local";
 import { Strategy as JWTStrategy , ExtractJwt } from "passport-jwt";
 
 import { User, UserDocument } from "../models/user.model";
+import { sendEmail } from "../workers/sendEmail.worker";
 // import passport.ts
 
 
@@ -18,8 +19,9 @@ passport.deserializeUser((id, done) => {
 // using email and pass
 passport.use("login", new LocalStrategy({
     usernameField: "email",
-    passwordField: "password"
-}, async (email, password, done) => {
+    passwordField: "password",
+    passReqToCallback: true
+}, async (req, email, password, done) => {
     try {
         const user: UserDocument = await User.findOne({ email });
         if (!user) {
@@ -60,6 +62,7 @@ passport.use("signup", new LocalStrategy({
             wa_number
         });
         await newUser.save();
+        // const emailSend = await sendEmail(email, "Welcome to Rent A Cycle", "Please Verify Email");
         return done(undefined, newUser, { message: "Signed up successfully" });
     } catch (err) {
         return done(err);

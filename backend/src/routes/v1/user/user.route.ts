@@ -1,18 +1,14 @@
 import { Router } from "express";
 import passport from "passport";
-import { login, profile } from "../../../controllers/user.controller";
+import { login, profile, signup, refreshToken } from "../../../controllers/user.controller";
 
 const router = Router();
 
 
-router.post("/signup", passport.authenticate("signup", { session: false }), async (req, res) => {
-    res.status(200).json({
-        message: "Signup successful",
-        user: req.user
-    });
-});
+router.post("/signup", signup);
 
 router.post("/login", login);
-router.get("/profile", passport.authenticate("jwt", { session: false }), profile);
+router.get("/profile", passport.authenticate("jwt", { passReqToCallback: true, session: false }), profile);
+router.post('/refreshToken', refreshToken);
 
 export default router;
