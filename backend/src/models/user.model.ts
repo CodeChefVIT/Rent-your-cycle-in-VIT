@@ -15,6 +15,7 @@ export type UserDocument = mongoose.Document & {
     block: string;
     room: string;
     phone: string;
+    verifyhash: string;
     isVerified: boolean;
     owned_bikes: mongoose.Types.ObjectId[];
     rented_bikes: pastRented[];

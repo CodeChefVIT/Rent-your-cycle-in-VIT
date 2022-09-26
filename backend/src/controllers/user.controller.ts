@@ -140,3 +140,26 @@ export const profile = async (req: Request, res: Response) => {
         return res.status(500).json({ message: error.message });
     }
 };
+
+export const verifyEmail = async (req: Request, res: Response) => {
+    try {
+        const { hash, id } = req.params;
+        const user = await User.findById(id);
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+        if (user.isVerified) {
+            return res.status(400).json({ message: "User already verified" });
+        }
+        if (user.verifyhash !== hash) {
+            return res.status(400).json({ message: "Invalid verification link" });
+        }
+        user.isVerified = true;
+        await user.save();
+        return res.status(200).json({ message: "User verified" });
+    }
+    catch (error) {
+        logger.error(namespace, error.message, error);
+        return res.status(500).json({ message: error.message });
+    }
+}
