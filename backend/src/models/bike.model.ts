@@ -7,6 +7,7 @@ export interface IBike extends Document {
     owner: UserDocument["_id"];
     current_user: UserDocument["_id"];
     image: string;
+    price: number;
     rented: boolean;
 }
 
@@ -16,6 +17,7 @@ const BikeSchema: Schema = new Schema({
     owner: { type: Schema.Types.ObjectId, ref: "User", required: true },
     current_user: { type: Schema.Types.ObjectId, ref: "User", default: null },
     image: { type: String, required: true },
+    price: { type: Number, required: true },
     rented: { type: Boolean, default: false },
 });
 

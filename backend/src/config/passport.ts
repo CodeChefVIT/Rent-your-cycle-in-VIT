@@ -51,11 +51,13 @@ passport.use("signup", new LocalStrategy({
             return done(undefined, false, { message: "Passwords do not match" });
         }
         const { name, regno, block, room, phone, wa_number } = req.body;
+        const verifyhash = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
         const newUser = new User({
             name,
             email,
             regno,
             password,
+            verifyhash,
             block,
             room,
             phone,

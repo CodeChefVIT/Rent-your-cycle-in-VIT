@@ -1,6 +1,12 @@
 import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
 
+type pastRented = {
+    bike: mongoose.Types.ObjectId[],
+    start: { type: Date },
+    end: { type: Date }
+}
+
 export type UserDocument = mongoose.Document & {
     name: string;
     email: string;
@@ -11,6 +17,7 @@ export type UserDocument = mongoose.Document & {
     phone: string;
     isVerified: boolean;
     owned_bikes: mongoose.Types.ObjectId[];
+    rented_bikes: pastRented[];
     comparePassword: comparePasswordFunction;
 };
 
@@ -22,12 +29,19 @@ const userSchema : mongoose.Schema = new mongoose.Schema({
     email: { type: String, required: true, unique: true },
     regno: { type: String, required: true },
     password: { type: String, required: true },
+    verifyhash: { type: String },
+    isVerified: { type: Boolean, default: false },
     block: { type: String, required: true },
     room: { type: Number, required: true },
     phone: { type: String, required: true },
-    verifyhash: { type: String },
     owned_bikes: [{ type: mongoose.Schema.Types.ObjectId, ref: "Bike" }],
-    isVerified: { type: Boolean, default: false }
+    past_rented: [
+        {
+            bike: { type: mongoose.Schema.Types.ObjectId, ref: "Bike" },
+            start: { type: Date },
+            end: { type: Date }
+        }
+    ]
 });
 
 userSchema.pre("save", async function save(next) {
