@@ -1,7 +1,8 @@
 {
 	"devDependencies": {
 		"@types/bcryptjs": "^2.4.2",
-		"@types/lodash": "^4.14.184"
+		"@types/lodash": "^4.14.184",
+		"@types/uuid": "^8.3.4"
 	},
 	"dependencies": {
 		"@types/passport-local": "^1.0.34",
